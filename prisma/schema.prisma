@@ -4,10 +4,27 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-   url      = "file:./dev.db"
+  url      = "file:./dev.db"
 }
 
 model Pokemon {
-  id   Int    @id @default(autoincrement())
-  nome String
+  id          Int          @id @default(autoincrement())
+  nome        String       @unique
+  sprite      String
+  tipos       Tipo[]
+  habilidades Habilidade[]
+}
+
+model Tipo {
+  id        Int      @id @default(autoincrement())
+  tipo      String
+  Pokemon   Pokemon? @relation(fields: [pokemonId], references: [id])
+  pokemonId Int?
+}
+
+model Habilidade {
+  id         Int      @id @default(autoincrement())
+  habilidade String
+  Pokemon    Pokemon? @relation(fields: [pokemonId], references: [id])
+  pokemonId  Int?
 }
