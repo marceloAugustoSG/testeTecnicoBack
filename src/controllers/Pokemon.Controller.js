@@ -5,11 +5,8 @@ import fetch from "node-fetch";
 export const create = async (req, res) => {
 
     try {
-        const { nome, tipo, spriteImage, habilidade } = req.body
-        console.log(`alo: ${nome}
-        spriteImage:${spriteImage}
-        tipos: ${tipo}`
-        )
+        const { nome } = req.body
+
         const isExistPokemon = await prisma.pokemon.findUnique({
             where: {
                 nome: nome
@@ -88,8 +85,6 @@ export const renderHome = async (req, res) => {
 
 }
 
-
-
 export const renderBuscar = async (req, res) => {
     const nomePokemon = req.query.nome;
     try {
@@ -97,7 +92,6 @@ export const renderBuscar = async (req, res) => {
         console.log(pokemon)
 
         if (pokemon) {
-
             res.render('../src/views/home', { pokemon });
         } else {
             // erro quando o Pokémon não é encontrado.
@@ -107,8 +101,6 @@ export const renderBuscar = async (req, res) => {
         // console.error("Erro ao buscar Pokémon:", error);
         res.status(500).send('Erro ao buscar Pokémon');
     }
-
-
 }
 
 export const renderMinhaPokedex = async (req, res) => {
@@ -118,10 +110,6 @@ export const renderMinhaPokedex = async (req, res) => {
 
         if (pokemons) {
             res.render('../src/views/minhaPokedex', { pokemons });
-        }
-        else {
-            // erro quando o Pokémon não é encontrado.
-            res.render('../src/views/erro', { mensagem: 'Nenhum Pokémon encontrado para o nome fornecido' });
         }
     } catch (error) {
 
