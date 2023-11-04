@@ -8,23 +8,9 @@ datasource db {
 }
 
 model Pokemon {
-  id          Int          @id @default(autoincrement())
-  nome        String       @unique
-  sprite      String
-  tipos       Tipo[]
-  habilidades Habilidade[]
-}
-
-model Tipo {
-  id        Int      @id @default(autoincrement())
-  tipo      String
-  Pokemon   Pokemon? @relation(fields: [pokemonId], references: [id])
-  pokemonId Int?
-}
-
-model Habilidade {
-  id         Int      @id @default(autoincrement())
-  habilidade String
-  Pokemon    Pokemon? @relation(fields: [pokemonId], references: [id])
-  pokemonId  Int?
+  id          Int     @id @default(autoincrement())
+  nome        String  @unique
+  spriteImage String?
+  tipos       String?
+  habilidades String?
 }

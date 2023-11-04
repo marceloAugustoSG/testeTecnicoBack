@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pokedex</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="buscaPokemon">
+            <form action="/buscar" method="GET">
+                <input type="text" name="nome" placeholder="Nome ou id do pokémon">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+        <div class="info">
+            <h2>Informações do Pokémon</h2>
+
+            <div class="imgBtn">
+                <img class="sprite" src="<%= pokemon.spriteImage %>" alt="<%= pokemon.nome %>" />
+                <form action="/pokemon" method="post">
+                    <input type="hidden" name="nome" value="<%= pokemon.nome %>">
+                    <input type="hidden" name="tipos" value="<%= pokemon.tipos.join(', ') %>">
+                    <input type="hidden" name="habilidades" value="<%= pokemon.habilidades.join(', ') %>">
+                    <input type="hidden" name="spriteImage" value="<%= pokemon.spriteImage %>">
+                    <button type="submit">+</button>
+                </form>
+            </div>
+            <p>
+                <span class="rotulo">Nome:</span>
+                <span class="valores">
+                    <%= pokemon.nome %>
+                </span>
+            </p>
+
+            <div class="box-tipos">
+                <span class="rotulo">Tipo(s):</span>
+                <ul class="valores">
+                    <% for (let tipo of pokemon.tipos) { %>
+                        <li>
+                            <%= tipo %>
+                        </li>
+                        <% } %>
+                </ul>
+
+            </div>
+
+            <div class="box-habilidades">
+                <span class="rotulo">Habilidade(s):</span>
+                <ul class="valores">
+                    <% for (let habilidade of pokemon.habilidades) { %>
+                        <li>
+                            <%= habilidade %>
+                        </li>
+                        <% } %>
+                </ul>
+
+
+            </div>
+        </div>
+
+        <form action="/minhaPokedex" method="GET">
+            <button class="btn" type="submit"> Minha pokedex</button>
+        </form>
+
+    </div>
+
+</body>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .btn {
+        margin-top: 10px;
+        width: 100%;
+        height: 50px;
+        background-color: #3761a8;
+        color: white;
+        border-radius: 10px;
+    }
+
+    ul {
+
+        padding: 5px 0 5px 15px;
+    }
+
+    .container {
+        width: auto;
+    }
+
+    .imgBtn {
+        display: flex;
+    }
+
+    .imgBtn form button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .info .sprite {
+        background-color: #feca1b;
+        margin-left: 87px;
+        border-radius: 10px;
+    }
+
+
+    h2 {
+        margin: 10px 10px;
+    }
+
+    .box-habilidades,
+    .box-tipos {
+        margin-top: 10px;
+    }
+
+    .valores {
+        color: white;
+        margin-left: 10px;
+
+    }
+
+    .buscaPokemon {
+        height: 60px;
+        background-color: #3761a8;
+
+    }
+
+    .buscaPokemon form {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .buscaPokemon form input {
+
+        width: 70%;
+    }
+
+    .buscaPokemon form button {
+
+        width: 30%;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        background-color: #EF5350;
+        border-radius: 0 0 10px 10px;
+    }
+</style>
+
+</html>

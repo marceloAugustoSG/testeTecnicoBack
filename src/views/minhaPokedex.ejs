@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minha pokedex</title>
+</head>
+
+<body>
+    <h1>Minha pokedex</h1>
+
+    <div class="info">
+        <ul>
+            <% pokemons.forEach((pokemon)=> { %>
+                <li class="info-individual">
+                    <div>
+                        <h2>
+                            <%= pokemon.nome %>
+                        </h2>
+                    </div>
+                    <div>
+                        <img src="<%= pokemon.spriteImage %>" alt="<%= pokemon.nome %>" />
+                    </div>
+
+                    <div>
+                        <strong>Tipo(s):</strong>
+                        <%= pokemon.tipos %>
+
+                    </div>
+                    <div>
+
+                        <p><strong>Habilidade(s):</strong>
+                            <%= pokemon.habilidades %>
+                        </p>
+                    </div>
+                </li>
+                <% }); %>
+        </ul>
+
+    </div>
+</body>
+
+<style>
+    h2 {
+        color: white;
+    }
+
+    .info ul {
+        margin: 10px;
+
+    }
+
+    ul li {
+        background-color: #3761a8;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 200px;
+        border-radius: 10px;
+
+    }
+
+    ul li h2 {
+        text-align: center;
+    }
+
+    ul li img {
+        background-color: #feca1b;
+        border-radius: 10px;
+    }
+
+
+    .info-individual {
+        margin: 10px;
+    }
+
+ 
+</style>
+
+</html>

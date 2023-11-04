@@ -7,9 +7,11 @@ class Pokemon {
             data,
             select: {
                 id: true,
-                nome: true
+                nome: true,
+                tipos: true,
+                spriteImage: true,
+                habilidades: true
             }
-
         })
         return pokemon;
     }
@@ -20,14 +22,12 @@ class Pokemon {
                 id: true,
                 nome: true,
                 tipos: true,
+                spriteImage: true,
                 habilidades: true
             }
+
         })
-
-        return pokemons;
-
-
-
+        return pokemons
     }
 }
 export default new Pokemon();
